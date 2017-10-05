@@ -1,0 +1,12 @@
+{
+  "name": "Nokia",
+  "version": "0.0.1",
+  "dependencies": {
+    
+  },
+  "sources": {
+  	"main.c", "led.py"
+  },
+  "sha256": "",
+  "key":""
+}
