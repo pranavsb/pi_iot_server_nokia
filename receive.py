@@ -32,15 +32,19 @@ def validate_json():
     if cmp_versions(new_json["version"], old_json["version"]) < 0:
         with open("/home/pi/data/error_log.txt", 'a') as fobj:
             fobj.writelines([time.strftime("%b %d %Y %H:%M:%S", time.localtime(time.time())), "Error while checking versions\n"])
+        return False
     file_list = new_json["sources"]; hash_list = new_json["sha256"]
     for source_file, hash_val in zip(file_list, hash_list):
         fobj = open(source_file, 'r')
         if hashlib.sha256(fobj.read()) != hash_val:
             with open("/home/pi/data/error_log.txt", 'a') as fobj:
                 fobj.writelines([time.strftime("%b %d %Y %H:%M:%S   ", time.localtime(time.time())), "Error with sha256 values\n"])
-            break
-
-
+            return False
+    #TODO set timeout - write to file like config.txt?
+    #TODO verify key
+    with open("/home/pi/data/error_log.txt", 'a') as fobj:
+        fobj.writelines([time.strftime("%b %d %Y %H:%M:%S   ", time.localtime(time.time())), "JSON validated successfully\n"])
+    return True
 
 # directory structure planned:
 # TODO: configure rwx permissions for these:
