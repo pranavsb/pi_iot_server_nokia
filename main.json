@@ -4,12 +4,12 @@
   "dependencies": {
 
   },
-  "sources": {
+  "sources": [
   	"main.c", "led.py"
-  },
+ ],
  "timeout": "2 things, one is freq of sending, second can be freq of pinging",
-  "sha256": {
+  "sha256": [
       "", ""
-  }
+  ],
   "key":"look into http vs https and ssh/scp"
 }
